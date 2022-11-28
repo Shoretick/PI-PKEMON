@@ -68,8 +68,9 @@ const getApiNamePokemons = async (name) => {
 
         try {  
             var arr=[];
+            
     
-                const apiUrl = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`, {headers: {  'Accept-Encoding': 'application/json',  } }); 
+                const apiUrl = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`, {headers: {  'Accept-Encoding': 'application/json',  } }); 
                 let obj= { 
                     id: apiUrl.data.id,
                     name: apiUrl.data.name,

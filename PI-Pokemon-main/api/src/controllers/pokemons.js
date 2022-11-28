@@ -14,10 +14,10 @@ const {getAllPokemons,getAllNamesPokemons,getAllIdsPokemons } = require('./funti
 router.get('/pokemons', async (req,res)=>{
     const name = req.query.name;
     let pokemonsTotal = await getAllPokemons();
-    let pokemonsNameTotal = await getAllNamesPokemons(name);
-
+    
     if (name) {
-        let pokemonName = await pokemonsNameTotal.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
+        let pokemonsNameTotal = await getAllNamesPokemons(name.toLowerCase());
+        let pokemonName = pokemonsNameTotal.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
         pokemonName.length?
             res.status(200).send(pokemonName):
             res.status(404).send('no results');

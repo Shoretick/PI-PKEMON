@@ -14,7 +14,7 @@ router.get  ('/types', async (req, res)=>{
     })
     
     const allType= await Type.findAll();
-    console.log(allType);
+    
     res.status(200).send(allType);
     
     

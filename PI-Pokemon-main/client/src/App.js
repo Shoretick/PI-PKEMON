@@ -1,19 +1,21 @@
 import './App.css';
-import {BrowserRouter,route,Switch} from 'react-router-dom'
+import {BrowserRouter,Route,Switch} from 'react-router-dom';
+import LandingPage from './components/LandingPage';
+import Home from './components/Home';
 
 function App() {
 
   return (
     <BrowserRouter>
     <div className="App">
-      <h1>Front-end Pokemon</h1>
-      <div className="text">
-  <p>Ash, Dawn y Brock continúan sus viajes por la región 
-      de Sinnoh, enfrentando nuevos desafíos y conociendo a más Pokémon.</p>
-</div>
+      <Switch>
+        <Route exact path='/' component={LandingPage}></Route>
+        <Route  path='/pokemons' component={Home}></Route>
+
+      </Switch>
     </div>
     </BrowserRouter>
   );
-}
+}                                                                                                                                                                                                                                                                                                                                                                                          
 
 export default App;

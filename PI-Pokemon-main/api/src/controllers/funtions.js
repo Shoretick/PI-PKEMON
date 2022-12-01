@@ -24,9 +24,9 @@ const getApiInfo = async () => {
                 speed: apiUrl.data.stats[5].base_stat,
                 height: apiUrl.data.height,
                 weight: apiUrl.data.weight,
-               // img: url.data.sprites.other.dream_world.front_default,
-                img: apiUrl.data.sprites.front_default,
-                type: apiUrl.data.types.map((e) => e.type.name),
+                img: apiUrl.data.sprites.other.dream_world.front_default,
+                //img: apiUrl.data.sprites.front_default,
+                type: apiUrl.data.types//.map((e) => e.type.name),
             }
             arr.push(obj)
         }
@@ -80,8 +80,8 @@ const getApiNamePokemons = async (name) => {
                     speed: apiUrl.data.stats[5].base_stat,
                     height: apiUrl.data.height,
                     weight: apiUrl.data.weight,
-                   // img: url.data.sprites.other.dream_world.front_default,
-                    img: apiUrl.data.sprites.front_default,
+                    img: url.data.sprites.other.dream_world.front_default,
+                    //img: apiUrl.data.sprites.front_default,
                     type: apiUrl.data.types.map((tipo) => tipo.type.name),
                 }
                 arr.push(obj)
@@ -116,8 +116,8 @@ const getApiNamePokemons = async (name) => {
                         speed: apiUrl.data.stats[5].base_stat,
                         height: apiUrl.data.height,
                         weight: apiUrl.data.weight,
-                       // img: url.data.sprites.other.dream_world.front_default,
-                        img: apiUrl.data.sprites.front_default,
+                       img: url.data.sprites.other.dream_world.front_default,
+                       //img: apiUrl.data.sprites.front_default,
                         type: apiUrl.data.types.map((tipo) => tipo.type.name),
                     }
                     arr.push(obj)

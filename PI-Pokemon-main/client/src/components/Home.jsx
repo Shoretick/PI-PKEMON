@@ -63,10 +63,12 @@ export default function Home() {
 
                     {
                 allPokemons?.map( (e) =>{
+                    console.log(e.type);
                     return( 
-                        <fragment>
+                        <fragment >
                     
-                    <Card name={e.name} img={e.img} type={e.type} />
+                    <Card id={e.id} name={e.name} img={e.img} 
+                    type={!e.createdInDB? e.type.map(e => {var arr=[]; arr.push(e.type.name + '  '); return arr }) :  e.types.map(e => {var arr=[]; arr.push(e.name + '  '); return arr })} />
                     
                     </fragment>
 

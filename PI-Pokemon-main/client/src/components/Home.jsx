@@ -1,16 +1,34 @@
 
-import React from 'react';
+import React, { Fragment,useState } from 'react';
 
 import { useEffect} from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { GetPokemons } from "../actions/index";
 import { Link } from 'react-router-dom';
 import Card from './Card';
+import {Pagination}  from "./Pagination";
 
 
 export default function Home() {
     const dispatch = useDispatch();
     const allPokemons = useSelector((state)=> state.pokemons);
+    
+    //Pagination
+    //------------------------
+
+    const [currentPage,setCurrentPage] = useState(1) ;
+    const  [pokemonsPerPage,setPokemonsPerPage] = useState(12);
+    //const [order,setOrder] = useState('');
+    const indexOfLastPokemons = currentPage*pokemonsPerPage ;
+    const indexOfFirstPokemons = indexOfLastPokemons- pokemonsPerPage ;
+    const currentPokemons = allPokemons.slice(indexOfFirstPokemons, indexOfLastPokemons);
+    
+
+    const pagination = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }
+//----------------------------------------------------------------------
+
 
     useEffect(()=>{ dispatch(GetPokemons());
     },[dispatch])
@@ -60,17 +78,23 @@ export default function Home() {
                 <option value='min'>Min   </option>
                 </select>
                 <div>
+                    <Pagination 
+                    pokemonsPerPage={pokemonsPerPage}
+                    allPokemons= {allPokemons.length}
+                    pagination={ pagination } >
+                        
+                    </Pagination>
 
                     {
-                allPokemons?.map( (e) =>{
+                currentPokemons?.map( (e) =>{
                     console.log(e.type);
                     return( 
-                        <fragment >
+                        <Fragment >
                     
-                    <Card id={e.id} name={e.name} img={e.img} 
+                    <Card id={e.id} name={e.name} img={e.img} key={e.id}
                     type={!e.createdInDB? e.type.map(e => {var arr=[]; arr.push(e.type.name + '  '); return arr }) :  e.types.map(e => {var arr=[]; arr.push(e.name + '  '); return arr })} />
                     
-                    </fragment>
+                    </Fragment>
 
                     )})
                     }

@@ -26,7 +26,7 @@ const getApiInfo = async () => {
                 weight: apiUrl.data.weight,
                 img: apiUrl.data.sprites.other.dream_world.front_default,
                 //img: apiUrl.data.sprites.front_default,
-                type: apiUrl.data.types//.map((e) => e.type.name),
+                types: apiUrl.data.types.map((e) => e.type.name),
             }
             arr.push(obj)
         }

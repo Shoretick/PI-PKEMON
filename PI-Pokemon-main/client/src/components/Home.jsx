@@ -3,10 +3,11 @@ import React, { Fragment,useState } from 'react';
 
 import { useEffect} from "react";
 import { useDispatch,useSelector } from "react-redux";
-import { GetPokemons,filterTypes,filterApiOrDb,orderByName,orderByAttack} from "../actions/index";
+import { GetPokemons,filterTypes,filterApiOrDb,orderByName,orderByAttack,PostPokemonCreate} from "../actions/index";
 import { Link } from 'react-router-dom';
 import Card from './Card';
 import {Pagination}  from "./Pagination";
+import SearchBar from "./SearchBar";
 
 
 export default function Home() {
@@ -69,11 +70,20 @@ export default function Home() {
 
         
     }
+    function handlePokemonCreate(e) {
+        dispatch(PostPokemonCreate());
+        setCurrentPage(1)
+
+        
+    }
+
 
     return(
         <div>
-            <Link to='/pokemons'>Crear Pokemon</Link>
+            <Link to='/pokemons/create'><button>Crear Pokemon</button> </Link>
             <h1> POKEMON HOME</h1>
+            
+
             <button value='All'onClick={e=>{handleClick(e)}}>all pokemons</button>
             <button value='Created'onClick={e=>{handleFilterCreated(e)}}>Pokemons created</button>
             <button value='Existing'onClick={e=>{handleFilterCreated(e)}}>Existing pokemon</button>
@@ -124,7 +134,7 @@ export default function Home() {
                     pagination={ pagination } >
                         
                     </Pagination>
-
+<SearchBar></SearchBar>
                     {
                 currentPokemons?.map( (e) =>{
                     console.log(e.type);

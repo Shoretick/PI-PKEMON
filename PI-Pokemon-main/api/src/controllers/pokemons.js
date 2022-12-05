@@ -17,7 +17,7 @@ router.get('/pokemons', async (req,res)=>{
     
     if (name) {
         let pokemonsNameTotal = await getAllNamesPokemons(name.toLowerCase());
-        let pokemonName = pokemonsNameTotal.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
+        let pokemonName = pokemonsNameTotal.filter(e => e.name.toLowerCase()===name.toLowerCase());
         pokemonName.length?
             res.status(200).send(pokemonName):
             res.status(404).send('no results');

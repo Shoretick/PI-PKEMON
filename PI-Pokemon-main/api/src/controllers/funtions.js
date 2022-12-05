@@ -71,7 +71,7 @@ const getApiNamePokemons = async (name) => {
             
     
                 const apiUrl = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`, {headers: {  'Accept-Encoding': 'application/json',  } }); 
-                let obj= { 
+                var obj= { 
                     id: apiUrl.data.id,
                     name: apiUrl.data.name,
                     hp: apiUrl.data.stats[0].base_stat,
@@ -80,17 +80,19 @@ const getApiNamePokemons = async (name) => {
                     speed: apiUrl.data.stats[5].base_stat,
                     height: apiUrl.data.height,
                     weight: apiUrl.data.weight,
-                    img: url.data.sprites.other.dream_world.front_default,
+                    img: apiUrl.data.sprites.other.dream_world.front_default,
                     //img: apiUrl.data.sprites.front_default,
-                    type: apiUrl.data.types.map((tipo) => tipo.type.name),
+                    types: apiUrl.data.types.map((e) => e.type.name),
                 }
                 arr.push(obj)
 
-
+console.log (arr)
             return arr;
+
     
         } catch (error) {
             console.log("no found");
+            console.log (arr)
             console.error(error);
             return ([]);
         }
@@ -116,9 +118,9 @@ const getApiNamePokemons = async (name) => {
                         speed: apiUrl.data.stats[5].base_stat,
                         height: apiUrl.data.height,
                         weight: apiUrl.data.weight,
-                       img: url.data.sprites.other.dream_world.front_default,
+                       img: apiUrl.data.sprites.other.dream_world.front_default,
                        //img: apiUrl.data.sprites.front_default,
-                        type: apiUrl.data.types.map((tipo) => tipo.type.name),
+                        types: apiUrl.data.types.map((e) => e.type.name),
                     }
                     arr.push(obj)
     

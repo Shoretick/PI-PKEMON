@@ -4,18 +4,55 @@
 const initialState = {
     pokemons:[],
     allPokemon:[],
+    allTypes:[],
+    detail:[],
     
 };
 
 
 function rootReducer(state=initialState,action){
     switch (action.type) {
+    
+// Gets
+//--------------------------------
         case 'GET_POKEMONS':
             return{
                 ...state,
                 pokemons: action.payload,
                 allPokemon:action.payload
             }
+        case 'GET_NAME_POKEMON':
+            return{
+                ...state,
+                pokemons:action.payload
+            }
+
+        case'GET_TYPES':
+            return {
+                ...state,
+                allTypes: action.payload
+
+                }
+        case 'GET_DETAILS_ID':
+            return{
+                ...state,
+                detail: action.payload
+            }
+
+
+//----------------------------------------------------------------
+
+// Post
+//--------------------------------
+        case 'POST_POKEMON_CREATE':
+            return {
+                ...state,
+            }
+//----------------------------------------------------------------
+
+
+// Sorts
+//--------------------------------
             case 'ORDER_BY_NAME':
                 if (action.payload !=='All'){ 
 
@@ -63,9 +100,11 @@ function rootReducer(state=initialState,action){
                         ...state,
                         pokemons: state.allPokemon
                         } }
+//----------------------------------------------------------------
 
 
-break;
+//Filters
+//--------------------------------
 
         case'FILTER_TYPES':
             const allTypes = state.allPokemon;
@@ -85,7 +124,7 @@ break;
                 ...state,
                 pokemons: action.payload === 'All'? allPokemon : createdFilters 
                         }
-            
+//----------------------------------------------------------------            
 
             
     

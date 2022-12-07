@@ -3,6 +3,7 @@ import { useEffect} from "react";
 import { useDispatch} from "react-redux";
 import { GetNamePokemon } from '../actions';
 import handleRender from './Home';
+import styles from './styles/SearchBar.module.css';
 
 export default function SearchBar(){
     const dispatch = useDispatch();
@@ -23,9 +24,9 @@ function handleSubmit(e) {
 
     
     return (
-        <div>
-            <input type="text" placeholder='Search' onChange={(e)=> handleInputCharge(e)}></input>
-             <button type='submit' onClick={(e)=> handleSubmit(e)}></button>
+        <div className={styles.containerSearchBar}>
+            <input className={styles.input} type="text" placeholder='Search' onChange={(e)=> handleInputCharge(e)}></input>
+             <button className={styles.button} type='submit' onClick={(e)=> handleSubmit(e)}>GO</button>
 
         </div>
     )

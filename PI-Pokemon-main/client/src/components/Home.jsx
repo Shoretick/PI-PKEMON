@@ -8,6 +8,10 @@ import { Link } from 'react-router-dom';
 import Card from './Card';
 import {Pagination}  from "./Pagination";
 import SearchBar from "./SearchBar";
+import Loader from './Loader';
+import styles from './styles/Home.module.css'
+import pokemonHomeApi from '../assets/pokemonHomeApi.png';
+
 
 
 export default function Home() {
@@ -23,7 +27,7 @@ export default function Home() {
     const indexOfLastPokemons = currentPage*pokemonsPerPage ;
     const indexOfFirstPokemons = indexOfLastPokemons- pokemonsPerPage ;
     const currentPokemons = allPokemons.slice(indexOfFirstPokemons, indexOfLastPokemons);
-    
+    const [loading,setLoading] = useState(false);
 
     const pagination = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -31,8 +35,10 @@ export default function Home() {
 //----------------------------------------------------------------------
 
 
-    useEffect(()=>{ dispatch(GetPokemons());
-    },[dispatch])
+    useEffect(()=>{
+        setLoading(true)
+        dispatch(GetPokemons());
+        setLoading(false)},[dispatch])
 
     function handleClick(e){
         e.preventDefault();
@@ -77,26 +83,40 @@ export default function Home() {
         
     }
 
+if (currentPokemons.length > 0) {
+    
 
-    return(
-        <div>
-            <Link to='/pokemons/create'><button>Crear Pokemon</button> </Link>
-            <h1> POKEMON HOME</h1>
-            
+    return( 
+        <Fragment className={styles.container}>
 
-            <button value='All'onClick={e=>{handleClick(e)}}>all pokemons</button>
-            <button value='Created'onClick={e=>{handleFilterCreated(e)}}>Pokemons created</button>
-            <button value='Existing'onClick={e=>{handleFilterCreated(e)}}>Existing pokemon</button>
+            <div className={styles.containerImg}>
+            <h1> <img className= {styles.titleImg} src={pokemonHomeApi} alt= "POKEMON HOME"></img></h1>
+            </div>
+            <div className={styles.searchBar}>
+                <SearchBar></SearchBar>
+            </div>
+            <div className={styles.containerButtonCreate}>
+            <Link  to='/pokemons/create'><button className={styles.buttonCreate}>Create Pokemon</button> </Link>
+            </div>
+                
+
+            <div className={styles.containerButtons}>
+           
+            <button className={styles.buttons} value='All'onClick={e=>{handleClick(e)}}>all pokemons</button>
+            <button className={styles.buttons} value='Created'onClick={e=>{handleFilterCreated(e)}}>Pokemons created</button>
+            <button className={styles.buttons} value='Existing'onClick={e=>{handleFilterCreated(e)}}>Existing pokemon</button>
+            </div>
             
-            <div>
-            <select onChange={e=> handleSortTo_AZ_ZA(e)} >
+            
+            <div className={styles.containerSelects}>
+            <select className={styles.selects} onChange={e=> handleSortTo_AZ_ZA(e)} >
                 <option  value='All'>Order</option>
                 <option  value='A-Z'>A-Z</option>
                 <option  value='Z-A'>Z-A</option>
                 
             </select>
 
-            <select onChange={e=>handleFilterTypes(e)} >
+            <select className={styles.selects} onChange={e=>handleFilterTypes(e)} >
             <option value='All' >All Types</option>
             <option value='poison'>poison</option>
             <option value='bug'>bug</option>
@@ -122,38 +142,49 @@ export default function Home() {
             </select>
             
 
-            <select onChange={e=>handleSortAttack(e)}>
+            <select className={styles.selects} onChange={e=>handleSortAttack(e)}>
                 <option value='All'>Order by attack</option>
                 <option value='Max'> Attack Max</option>
                 <option value='Min'>Attack Min</option>
                 </select>
                 <div>
+
+                    <div className={styles.pagination} >
                     <Pagination 
                     pokemonsPerPage={pokemonsPerPage}
                     allPokemons= {allPokemons.length}
                     pagination={ pagination } >
                         
                     </Pagination>
-<SearchBar></SearchBar>
+                    </div>
+
+
+                    <div className={styles.cards}>
                     {
                 currentPokemons?.map( (e) =>{
+                    
                     console.log(e.type);
                     return( 
+                        
                         <Fragment >
                     
                     <Card id={e.id} name={e.name} img={e.img} key={e.id}
                     type={!e.createdInDB? e.types.map(e => {var arr=[]; arr.push(e + '  '); return arr }) :  e.types.map(e => {var arr=[]; arr.push(e.name + '  '); return arr })} />
                     
                     </Fragment>
+                  
 
                     )})
                     }
+                    </div>
                 </div>
                 
 
             </div>
-        </div>
+        </Fragment>
 
     )
-    
+   } return ( 
+    <Loader >loading</Loader>
+   )
 }

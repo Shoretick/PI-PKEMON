@@ -1,24 +1,27 @@
 .nav{
-    display: block;
-    flex-direction: column column;
-    border-color: rgb(241, 28, 28);
-    border-width: 3px;
-    border-style: solid;
+    
+    display: inline-block;
     border-radius: 10px;
     border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
     color: blue;
-    background-color: aquamarine ;
-
+    background-color: rgb(60, 90, 166) ;
+    height: 20px;
+    width: 70%;
+    position: absolute;
+    top: 20%;
+    left: 15%;
+  
 }
 .ul{
 border-color : rgb(241, 28, 28)
 }
 .div{
-  background-color: rgb(255, 255, 0);
-   
-    display:inline;
+    position: relative;
+    bottom: 41px;
+    display:inline-block;
     align-items:flex-end;
-    flex-direction: column column;
+    
     margin: 4px;
    
 }
@@ -31,4 +34,16 @@ border-color : rgb(241, 28, 28)
 .li:hover {
 	box-shadow: 0 8px 36px 0 rgba(0, 0, 0, 0.2);
     cursor: pointer;
+}
+
+.buttons{
+  
+    position: relative;
+  
+height: 20px;
+background-color: rgb(255, 203, 5);
+border-radius: 10px;
+border-color: rgb(255, 203, 5);
+
+
 }

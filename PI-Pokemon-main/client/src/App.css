@@ -1,7 +1,7 @@
 .App {
   background-image: url(https://external-preview.redd.it/NJeQ3CAXvKeIAvAq2WWNbeTA5JN1HuyaffiApqwe7B4.jpg?width=640&crop=smart&auto=webp&s=3b06eb8a3b98c6b2bf0243614275be51f54bfd43);
   text-align: center;
-  color: goldenrod;
+  color: rgb(255, 203, 5);
   text-shadow: 1px 1px 10px  rgb(75, 19, 216);
   font-size: 25px;
   background-color: #282c34;

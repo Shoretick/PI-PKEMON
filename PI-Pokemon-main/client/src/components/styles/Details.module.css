@@ -1,0 +1,181 @@
+:root{
+    --value:  ; 
+}
+
+.container{
+display:inline-block;
+border-color: rgb(255, 255, 255);
+border: 20px;
+border-radius: 400px;
+height: 800px;
+width: 800px;
+position: relative;
+top: 22px;
+
+background-color:rgb(255, 255, 255);
+
+}
+.linea1{
+    display: flex;
+    background-color: black;
+    height: 20px;
+    position: relative;
+    bottom: 13px;
+}
+.linea2{
+    display: flex;
+    background-color: black;
+    height: 10px;
+    position: relative;
+    bottom:  8px;
+}
+.centro1{
+   
+    background-color: black;
+    height: 150px;
+    width: 150px;
+    border-radius: 100px;
+    position: relative;
+    left:325px ;
+    bottom:  90px;
+}
+.centro2{
+    
+    background-color: rgb(150, 150, 150);
+    height: 130px;
+    width: 130px;
+    border-radius: 100px;
+    position: relative;
+    left:335px ;
+    bottom:  230px;
+}
+.centro3{
+    
+    background-color: rgb(255, 255, 255);
+    height: 110px;
+    width: 110px;
+    border-radius: 100px;
+    position: relative;
+    left:345px ;
+    bottom:  350px;
+    animation-name :centro-color;
+    animation-duration: 2s;
+    animation-delay: 0.1s;
+    animation-timing-function:linear;
+    animation-iteration-count: infinite;
+}
+.centro4{
+    
+    background-color: rgb(232, 232, 232);
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    position: relative;
+    left:350px ;
+    bottom:  455px;
+    animation-name :centro-color;
+    animation-duration: 2s;
+    animation-delay: 0.3s;
+    animation-timing-function:linear;
+    animation-iteration-count: infinite;
+   
+}
+.divImg{
+    
+    display: block;
+    height: 400px;
+    background-color: red;
+    border-top-left-radius: 400px;
+    border-top-right-radius: 400px;
+
+}
+.Img{
+    display: block;
+    height: 300px;
+    width: 350px;
+    border: 30px;
+    border-color: rgb(0, 0, 0);
+    border-radius: 100px;
+    background-color: rgb(196, 31, 31);
+    position: relative;
+    top: 30px;
+    left: 225px;
+
+}
+.divName{
+  position:relative;
+  bottom: 450px;
+  left: 300px;
+    align-items:flex-end;
+    width: 200px;
+    border: 20px;
+    border-color: black;
+    border-radius: 400px;
+    font-size: 20px;
+
+}
+.continerH5{
+    position: relative;
+     border: 10px;
+    bottom: 600px;
+   
+    border-color: blueviolet;
+    height: 450px;
+    width: 800px;
+    font-size: 30px;
+}
+.divH5{
+background-color:rgb(42, 117, 187);
+border-radius: 50px;
+
+border-color: black;
+    height: 300px;
+    width: 190px;
+    position: absolute;
+    left: 60px;
+    top: -130px;
+    
+
+
+    
+    
+}
+.divH52{
+
+    background-color:rgb(42, 117, 187);
+    border-radius: 50px;
+    height: 300px;
+    width: 190px;
+    position: absolute;
+    left: 550px;
+    bottom: 280px;
+    
+  
+  
+}
+h5{
+    display:flex;
+    align-items:flex-end;
+    position: relative;
+    left: 25px;
+    bottom: 30px;
+}
+.divButton{
+   
+}
+.button{
+    position: relative;
+    background-color: rgb(255, 203, 5);
+    border-color: rgb(199, 160, 8);
+    border-radius: 50px;
+    height: 60px;
+    width: 60px;
+    bottom: 1090px;
+
+}
+
+@keyframes centro-color{
+    0%{ background-color:rgb(230, 45, 45);}
+    50%{ background-color:rgb(255, 255, 255);}
+    100%{ background-color:rgb(230, 45, 45);}
+}

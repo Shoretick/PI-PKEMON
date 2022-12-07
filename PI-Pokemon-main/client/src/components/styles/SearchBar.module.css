@@ -1,0 +1,23 @@
+.containerSearchBar{
+display: inline-block
+}
+.input{
+    
+background-color: rgb(32, 224, 224);
+border-color:rgb(32, 224, 224) ;
+border-radius: 15px;
+height: 20px;
+
+}
+
+.button{
+    position: relative;
+    top: 1px;
+    right: 40px;
+height: 22px;
+width: 38px;
+background-color: goldenrod;
+border-color: goldenrod;
+border-radius: 15px;
+
+}
